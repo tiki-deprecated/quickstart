@@ -14,21 +14,5 @@
         <h1>Let&#39;s do this shit</h1>
         <button onclick="TikiSdk.present()">Show Offer</button>
     </div>
-    <script src="https://unpkg.com/@mytiki/tiki-sdk-js@1.0.4/dist/index.js"></script>
-    <script>
-        window.TikiSdk.config()
-            .offer
-                .description('Trade your IDFA (kind of like a serial # for your phone) for a discount.')
-                .reward('https://cdn.mytiki.com/assets/demo-reward.png')
-                .bullet({ text: 'Learn how our ads perform', isUsed: true })
-                .bullet({ text: 'Reach you on other platforms', isUsed: false })
-                .bullet({ text: 'Sold to other companies', isUsed: false })
-                .terms('terms.md')
-                .ptr('db2fd320-aed0-498e-af19-0be1d9630c63')
-                .tag(window.TikiSdk.TitleTag.deviceId())
-                .use({ usecases:[window.TikiSdk.LicenseUsecase.attribution()] })
-                .add()
-            .initialize('f3dbd181-1273-4be7-8a56-a9d258feccda', '33844684-632c-4d94-9ffe-827d8519d498');
-    </script>
 </body>
 </html>
