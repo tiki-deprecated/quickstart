@@ -107,9 +107,9 @@ First you'll need an API Key (they're also free), just open back up the [TIKI Co
     ```
 
    From the response, copy the `access_token` field
-<br />
-<br />
+
 2. Retrieve the license record
+
    ```shell
    curl --request POST \
      --url 'https://mytiki.com/api/license/list?maxResults=100' \
@@ -119,12 +119,14 @@ First you'll need an API Key (they're also free), just open back up the [TIKI Co
      --data '
     {
     "tags": [
-    "custom:quickstart"
-    ]
+        "custom:quickstart"
+        ]
     }
     '
    ```
+   
    You should get back something like:
+   
    ```json
    {
     "approxResults":1,
