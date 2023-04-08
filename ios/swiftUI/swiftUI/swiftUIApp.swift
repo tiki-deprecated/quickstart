@@ -1,8 +1,6 @@
 //
-//  swiftUIApp.swift
-//  swiftUI
-//
-//  Created by Michael Audi on 4/8/23.
+// Copyright (c) TIKI Inc.
+// MIT license. See LICENSE file in root directory.
 //
 
 import SwiftUI
