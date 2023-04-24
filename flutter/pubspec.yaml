@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  tiki_sdk_flutter: ^2.1.6
 
 dev_dependencies:
   flutter_test:
