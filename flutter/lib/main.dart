@@ -1,6 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:tiki_sdk_flutter/tiki_sdk.dart';
 
-void main() {
+Future<void> main() async {
+  await TikiSdk.config()
+      .offer
+      .reward(Image.asset("assets/images/reward.png"))
+      .ptr("test_offer")
+      .bullet("Learn how our ads perform ", true)
+      .bullet("Reach you on other platforms", false)
+      .bullet("Sold to other companies", false)
+      .use([LicenseUsecase.custom("customUsecase")], destinations: [""])
+      .tag(TitleTag.deviceId())
+      .description(
+          "Trade your IDFA (kind of like a serial # for your phone) for a discount.")
+      .terms("assets/terms.md")
+      .duration(const Duration(days: 365))
+      .add()
+      .initialize("f3dbd181-1273-4be7-8a56-a9d258feccda", "test_user_123");
   runApp(const MyApp());
 }
 
@@ -9,51 +25,34 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(title: 'TIKI Quickstart'),
-    );
+    return const MaterialApp(
+        title: 'TIKI Quickstart', home: Scaffold(body: HomePage()));
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: Center(
+    return Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text('$_counter',
-                style: Theme.of(context).textTheme.headlineMedium),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+          Image.asset("assets/images/doc-logo.png"),
+          const Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              child: Text("Let's do this shit")),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    const Color(0xFF1C0000), // background (button) color
+                foregroundColor:
+                    const Color(0xFFFFCC33), // foreground (text) color
+              ),
+              onPressed: () => TikiSdk.present(context),
+              child: const Text("Show Offer"))
+        ]));
   }
 }
